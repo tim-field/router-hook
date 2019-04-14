@@ -1,0 +1,36 @@
+{
+  "name": "hook-router",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "source": "src/index.js",
+  "license": "MIT",
+  "peerDependencies": {
+    "prop-types": "^15.7",
+    "react": "^16.8",
+    "react-dom": "^16.8"
+  },
+  "dependencies": {
+    "@babel/core": "^7.4.3",
+    "@babel/preset-env": "^7.4.3",
+    "@babel/preset-react": "^7.0.0",
+    "history": "^4.9.0",
+    "path-to-regexp": "^3.0.0"
+  },
+  "devDependencies": {
+    "prop-types": "^15.7.2",
+    "react": "^16.8",
+    "react-dom": "^16.8",
+    "rollup": "^1.10.0",
+    "rollup-plugin-babel": "^4.3.2",
+    "rollup-plugin-commonjs": "^9.3.4",
+    "rollup-plugin-node-resolve": "^4.2.3",
+    "rollup-plugin-peer-deps-external": "^2.2.0",
+    "yalc": "^1.0.0-pre.27"
+  },
+  "scripts": {
+    "prepublish": "npm run build",
+    "build": "rollup -c",
+    "watch": "rollup -c -w",
+    "publish-local": "yalc publish"
+  }
+}
