@@ -9,7 +9,6 @@ export default {
   output: {
     file: "dist/index.js",
     format: "es",
-    sourcemap: true,
     globals: {
       react: "React",
       "react-dom": "ReactDOM"
@@ -24,7 +23,7 @@ export default {
       runtimeHelpers: true
     }),
     resolve({
-      extensions: [".ts", ".tsx", ".js", ".jsx", ".json"]
+      extensions: [".js", ".jsx"]
     }),
     commonjs()
   ]

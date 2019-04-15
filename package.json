@@ -1,6 +1,6 @@
 {
   "name": "router-hook",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "dist/index.js",
   "source": "src/index.js",
   "license": "MIT",
@@ -10,7 +10,6 @@
     "react-dom": "^16.8"
   },
   "dependencies": {
-   
     "history": "^4.9.0",
     "path-to-regexp": "^3.0.0"
   },
