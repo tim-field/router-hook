@@ -1,5 +1,5 @@
 {
-  "name": "hook-router",
+  "name": "router-hook",
   "version": "1.0.0",
   "main": "dist/index.js",
   "source": "src/index.js",
