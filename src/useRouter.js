@@ -9,32 +9,49 @@ const toLocation = path => new URL(path, window.location.href)
 // @see https://reactjs.org/docs/hooks-reference.html#bailing-out-of-a-state-update
 const cloneLocation = () => Object.assign({}, window.location)
 
-function useRouter(initial = "") {
-  const [location, setLocation] = useState(
-    initial ? toLocation(initial) : cloneLocation()
-  )
+function useRouter() {
+  const [location, setLocation] = useState(() => cloneLocation())
+  const [blocking, setBlocking] = useState(false)
+  const [blocked, setBlocked] = useState(false)
 
-  const setRoute = useCallback(path => setLocation(toLocation(path)), [])
+  const setRoute = useCallback(
+    path => {
+      if (!blocking) {
+        const newLocation =
+          typeof path == "string" ? toLocation(path) : cloneLocation()
+        setLocation(newLocation)
+        setBlocked(false)
+        return true
+      } else {
+        setBlocked(true)
+        return false
+      }
+    },
+    [blocking]
+  )
 
   useEffect(() => {
     const { pathname, search } = location
     if (window.location.pathname !== pathname) {
-      history.push(pathname)
-      setLocation(cloneLocation())
+      if (!blocking) {
+        history.push(pathname)
+        setRoute()
+      }
     } else if (window.location.search !== search) {
       history.replace(pathname + search)
     }
-  }, [location])
+  }, [location, setRoute, blocking])
 
   useEffect(() => {
     window.onpopstate = function historyChange(ev) {
       if (ev.type === "popstate") {
-        setLocation(cloneLocation())
+        setRoute()
       }
     }
-  }, [])
+    return () => (window.onpopstate = undefined)
+  }, [setRoute])
 
-  return [location, setRoute]
+  return [location, setRoute, blocked, setBlocking]
 }
 
 export default useRouter
