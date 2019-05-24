@@ -21,7 +21,11 @@ export default function route(path) {
       }
     },
     toUrl: params => {
-      return toPath(params)
+      const defined = Object.entries(params).reduce((acc, [k, v]) => {
+        return v === undefined ? acc : { ...acc, [k]: v }
+      }, {})
+
+      return toPath(defined)
     }
   }
 }
