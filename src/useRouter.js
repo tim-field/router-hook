@@ -30,6 +30,14 @@ function useRouter() {
     [blocking]
   )
 
+  const setIsBlocking = useCallback(value => {
+    setBlocking(value)
+    if (value === false) {
+      // We should no longer be in a blocked state now
+      setBlocked(false)
+    }
+  }, [])
+
   useEffect(() => {
     const { pathname, search } = location
     if (window.location.pathname !== pathname) {
@@ -51,7 +59,7 @@ function useRouter() {
     return () => (window.onpopstate = undefined)
   }, [setRoute])
 
-  return [location, setRoute, blocked, setBlocking]
+  return [location, setRoute, blocked, setIsBlocking]
 }
 
 export default useRouter
