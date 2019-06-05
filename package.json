@@ -1,6 +1,6 @@
 {
   "name": "router-hook",
-  "version": "2.2.1",
+  "version": "2.3.0",
   "main": "dist/index.js",
   "source": "src/index.js",
   "license": "MIT",
