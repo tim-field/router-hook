@@ -1,10 +1,10 @@
-import babel from "rollup-plugin-babel"
+import typescript from "rollup-plugin-typescript2"
 import resolve from "rollup-plugin-node-resolve"
 import commonjs from "rollup-plugin-commonjs"
 import peerDepsExternal from "rollup-plugin-peer-deps-external"
 
 export default {
-  input: "./src/index.js",
+  input: "./src/index.ts",
 
   output: {
     file: "dist/index.js",
@@ -17,14 +17,10 @@ export default {
 
   plugins: [
     peerDepsExternal(),
-    babel({
-      exclude: "node_modules/**",
-      extensions: [".js", ".jsx"],
-      runtimeHelpers: true
-    }),
     resolve({
-      extensions: [".js", ".jsx"]
+      extensions: [".ts"]
     }),
+    typescript(),
     commonjs()
   ]
 }

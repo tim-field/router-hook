@@ -3,11 +3,8 @@ import { createBrowserHistory } from "history"
 
 const history = createBrowserHistory()
 
-const toLocation = path => new URL(path, window.location.href)
-
-// without this react won't re-render as location is the same object
-// @see https://reactjs.org/docs/hooks-reference.html#bailing-out-of-a-state-update
-const cloneLocation = () => Object.assign({}, window.location)
+const toLocation = (path: string) => new URL(path, window.location.href)
+const cloneLocation = () => new URL(window.location.href)
 
 function useRouter() {
   const [location, setLocation] = useState(() => cloneLocation())
@@ -15,7 +12,7 @@ function useRouter() {
   const [blocked, setBlocked] = useState(false)
 
   const setRoute = useCallback(
-    path => {
+    (path?: string) => {
       if (!blocking) {
         const newLocation =
           typeof path == "string" ? toLocation(path) : cloneLocation()
@@ -56,10 +53,9 @@ function useRouter() {
         setRoute()
       }
     }
-    return () => (window.onpopstate = undefined)
   }, [setRoute])
 
-  return [location, setRoute, blocked, setIsBlocking]
+  return [location, setRoute, blocked, setIsBlocking, history]
 }
 
 export default useRouter
