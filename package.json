@@ -1,7 +1,9 @@
 {
   "name": "router-hook",
+  "author": "Tim Field <tim@mohiohio.com>",
   "version": "3.0.0",
   "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "source": "src/index.js",
   "license": "MIT",
   "peerDependencies": {
