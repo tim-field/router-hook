@@ -3,7 +3,6 @@
   "author": "Tim Field <tim@mohiohio.com>",
   "version": "3.0.5",
   "main": "dist/index.js",
-  "source": "src/index.js",
   "license": "MIT",
   "peerDependencies": {
     "react": "^16.8"
