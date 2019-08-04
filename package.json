@@ -1,13 +1,12 @@
 {
   "name": "router-hook",
   "author": "Tim Field <tim@mohiohio.com>",
-  "version": "3.0.0",
+  "version": "3.0.2",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "source": "src/index.js",
   "license": "MIT",
   "peerDependencies": {
-    "prop-types": "^15.7",
     "react": "^16.8",
     "react-dom": "^16.8"
   },
@@ -20,25 +19,22 @@
     "@types/path-to-regexp": "^1.7.0",
     "@types/react": "^16.8.19",
     "@types/react-dom": "^16.8.4",
+    "@typescript-eslint/eslint-plugin": "^1.13.0",
+    "@typescript-eslint/parser": "^1.13.0",
     "eslint": "^5.16.0",
+    "eslint-config-prettier": "^6.0.0",
+    "eslint-plugin-prettier": "^3.1.0",
     "eslint-plugin-react": "^7.13.0",
     "eslint-plugin-react-hooks": "^1.6.0",
-    "prop-types": "^15.7.2",
+    "prettier": "^1.18.2",
     "react": "^16.8",
     "react-dom": "^16.8",
-    "rollup": "^1.10.0",
-    "rollup-plugin-commonjs": "^9.3.4",
-    "rollup-plugin-node-resolve": "^4.2.3",
-    "rollup-plugin-peer-deps-external": "^2.2.0",
-    "rollup-plugin-typescript2": "^0.21.1",
     "tslib": "^1.9.3",
     "typescript": "^3.5.1",
     "yalc": "^1.0.0-pre.27"
   },
   "scripts": {
-    "prepublish": "npm run build",
-    "build": "rollup -c",
-    "watch": "rollup -c -w",
+    "build": "eslint \"src/**.ts\" && tsc -p ./",
     "publish-local": "yalc publish"
   }
 }
