@@ -1,8 +1,5 @@
-import * as React from "react"
-import PropTypes from "prop-types"
+import React, { createContext, useContext, useMemo, ReactElement } from "react"
 import useRouter from "./useRouter"
-
-const { createContext, useContext, useMemo } = React
 
 const SetRoute = createContext(null)
 const Location = createContext(null)
@@ -25,29 +22,20 @@ export function useHistory() {
   return useContext(History)
 }
 
-export default function Provider({ children }: { children: React.ReactNode }) {
+export default function Provider({ children }: { children: ReactElement }) {
   const [location, setRoute, blocked, setBlocking, history] = useRouter()
 
   const blockValue = useMemo(() => {
     return [blocked, setBlocking]
   }, [blocked, setBlocking])
 
-  return React.createElement(
-    Location.Provider,
-    { value: location },
-    React.createElement(
-      SetRoute.Provider,
-      { value: setRoute },
-      React.createElement(
-        BlockRoute.Provider,
-        { value: blockValue },
-        React.createElement(History.Provider, { value: history }, children)
-      )
-    )
+  return (
+    <Location.Provider value={location}>
+      <SetRoute.Provider value={setRoute}>
+        <BlockRoute.Provider value={blockValue}>
+          <History.Provider value={history}>{children}</History.Provider>
+        </BlockRoute.Provider>
+      </SetRoute.Provider>
+    </Location.Provider>
   )
-}
-
-Provider.propTypes = {
-  children: PropTypes.node.isRequired,
-  preRoute: PropTypes.func
 }
