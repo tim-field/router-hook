@@ -26,7 +26,7 @@
     "prettier": "^1.18.2",
     "react": "^16",
     "react-dom": "^16",
-    "tslib": "^1.9.3",
+    "tslib": "^1.11.1",
     "typescript": "^3",
     "yalc": "^1.0.0-pre.27"
   },
