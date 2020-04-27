@@ -48,7 +48,7 @@ function useRouter() {
   }, [location, setRoute, blocking])
 
   useEffect(() => {
-    window.onpopstate = function historyChange(ev) {
+    window.onpopstate = function historyChange(ev: PopStateEvent) {
       if (ev.type === "popstate") {
         setRoute()
       }

@@ -5,7 +5,7 @@
   "main": "dist/index.js",
   "license": "MIT",
   "peerDependencies": {
-    "react": "^16.8"
+    "react": "^16"
   },
   "dependencies": {
     "history": "^4.9.0",
@@ -13,21 +13,20 @@
   },
   "devDependencies": {
     "@types/history": "^4.7.2",
-    "@types/path-to-regexp": "^1.7.0",
-    "@types/react": "^16.8.19",
-    "@types/react-dom": "^16.8.4",
-    "@typescript-eslint/eslint-plugin": "^1.13.0",
-    "@typescript-eslint/parser": "^1.13.0",
-    "eslint": "^5.16.0",
+    "@types/react": "^16",
+    "@types/react-dom": "^16",
+    "@typescript-eslint/eslint-plugin": "^2.29.0",
+    "@typescript-eslint/parser": "^2.29.0",
+    "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.0.0",
     "eslint-plugin-prettier": "^3.1.0",
     "eslint-plugin-react": "^7.13.0",
     "eslint-plugin-react-hooks": "^1.6.0",
     "prettier": "^1.18.2",
-    "react": "^16.8",
-    "react-dom": "^16.8",
+    "react": "^16",
+    "react-dom": "^16",
     "tslib": "^1.9.3",
-    "typescript": "^3.5.1",
+    "typescript": "^3",
     "yalc": "^1.0.0-pre.27"
   },
   "scripts": {

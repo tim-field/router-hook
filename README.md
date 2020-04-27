@@ -1,4 +1,18 @@
-```JS
+```js
+// index.js
+import { RouterProvider } from "router-hook"
+
+
+ReactDOM.render(
+  <RouterProvider>
+    <App />
+  </RouterProvider>
+  document.getElementById("root")
+)
+
+```
+
+```js
 // routes.js
 import { route } from "router-hook"
 
@@ -7,13 +21,11 @@ export const registerRoute = route("/register")
 export const loginRoute = route("/login")
 export const accountRoute = route("/account")
 export const editRoute = route("/thing/edit/:id?")
-
 ```
 
-
-```JS
+```jsx
 // Router.js
-import { useLocation, useSetRoute } from "router-hook"
+import { useLocation, useSetRoute, A } from "router-hook"
 import {
   homeRoute,
   registerRoute,
@@ -28,7 +40,6 @@ function Router() {
   const [user] = useUser()
   const path = location.pathname
 
-
   const auth = render => {
     if (user && user.id) {
       return render
@@ -39,8 +50,11 @@ function Router() {
     }
   }
 
-   return (
-    <Default>
+  return (
+    <>
+      <A className="App-link" href={loginRoute.toUrl()}>
+        Login
+      </A>
       {homeRoute.match(path, () => (
         <Home />
       ))}
@@ -50,9 +64,15 @@ function Router() {
       {loginRoute.match(path, () => (
         <Login />
       ))}
-      {accountRoute.match(path, auth(() => <Account />))}
-      {editRoute.match(path, auth(({ id }) => <Edit id={id} />))}
-    </Default>
+      {accountRoute.match(
+        path,
+        auth(() => <Account />)
+      )}
+      {editRoute.match(
+        path,
+        auth(({ id }) => <Edit id={id} />)
+      )}
+    </>
   )
 }
 ```

@@ -1,0 +1,18 @@
+import React from "react"
+import { useSetRoute } from "./Provider"
+
+export default function A(props: React.HTMLProps<HTMLAnchorElement>) {
+  const setRoute = useSetRoute()
+  return (
+    <a
+      onClick={ev => {
+        if (props.onClick) {
+          props.onClick(ev)
+        }
+        ev.preventDefault()
+        setRoute(props.href)
+      }}
+      {...props}
+    />
+  )
+}

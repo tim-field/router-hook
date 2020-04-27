@@ -1,18 +1,20 @@
-import Provider, {
+import RouterProvider, {
   useLocation,
   useSetRoute,
   useBlockRoute,
   useHistory
 } from "./Provider"
 import route from "./route"
+import A from "./A"
 import useRouter from "./useRouter"
 
 export {
-  Provider,
+  RouterProvider,
   useLocation,
   useSetRoute,
   useBlockRoute,
   route,
   useRouter,
-  useHistory
+  useHistory,
+  A
 }
