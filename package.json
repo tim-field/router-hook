@@ -3,6 +3,7 @@
   "author": "Tim Field <tim@mohiohio.com>",
   "version": "4.0.0",
   "main": "dist/index.js",
+  "homepage": "https://github.com/tim-field/router-hook/#readme",
   "license": "MIT",
   "peerDependencies": {
     "react": "^16"
