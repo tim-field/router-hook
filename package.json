@@ -6,7 +6,8 @@
   "homepage": "https://github.com/tim-field/router-hook/#readme",
   "license": "MIT",
   "peerDependencies": {
-    "react": "^16"
+    "react": "^16",
+    "react-dom": "^16"
   },
   "dependencies": {
     "history": "^4.9.0",
@@ -24,8 +25,6 @@
     "eslint-plugin-react": "^7.13.0",
     "eslint-plugin-react-hooks": "^1.6.0",
     "prettier": "^1.18.2",
-    "react": "^16",
-    "react-dom": "^16",
     "tslib": "^1.11.1",
     "typescript": "^3",
     "yalc": "^1.0.0-pre.27"
