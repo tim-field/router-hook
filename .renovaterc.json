@@ -1,0 +1,12 @@
+{
+  "packageRules": [
+    {
+      "packagePatterns": ["*"],
+      "rangeStrategy": "pin"
+    },
+    {
+      "depTypeList": ["engines", "peerDependencies"],
+      "rangeStrategy": "auto"
+    }
+  ]
+}

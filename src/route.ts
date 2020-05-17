@@ -1,6 +1,6 @@
-import pathToRegexp from "path-to-regexp"
+import { pathToRegexp, Key, compile } from "path-to-regexp"
 
-function getParams(keys: pathToRegexp.Key[], match: RegExpExecArray) {
+function getParams(keys: Key[], match: RegExpExecArray) {
   return keys.reduce(
     (acc, key, i) => ({ [key.name]: match[i + 1], ...acc }),
     {}
@@ -8,9 +8,9 @@ function getParams(keys: pathToRegexp.Key[], match: RegExpExecArray) {
 }
 
 export default function route(path: string) {
-  const keys: pathToRegexp.Key[] = []
+  const keys: Key[] = []
   const regex = pathToRegexp(path, keys)
-  const toPath = pathToRegexp.compile(path)
+  const toPath = compile(path)
 
   return {
     match: (location: string, render?: React.FunctionComponent) => {
