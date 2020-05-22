@@ -27,7 +27,7 @@ export default function route(path: string) {
           }, {})
         : params
 
-      return toPath(defined)
+      return toPath(defined) || "/"
     }
   }
 }
