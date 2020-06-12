@@ -10,7 +10,7 @@
     "react-dom": "^16"
   },
   "dependencies": {
-    "history": "^4.9.0",
+    "history": "^5.0.0",
     "path-to-regexp": "^6.0.0"
   },
   "devDependencies": {
