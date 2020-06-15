@@ -7,7 +7,6 @@ export default function A(props: React.HTMLProps<HTMLAnchorElement>) {
     <a
       {...props}
       onClick={ev => {
-        console.log("deep", ev)
         ev.persist()
         if (props.onClick) {
           props.onClick(ev)
