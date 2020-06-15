@@ -1,7 +1,7 @@
 {
   "name": "router-hook",
   "author": "Tim Field <tim@mohiohio.com>",
-  "version": "5.0.0",
+  "version": "5.0.1",
   "main": "dist/index.js",
   "homepage": "https://github.com/tim-field/router-hook/#readme",
   "license": "MIT",
