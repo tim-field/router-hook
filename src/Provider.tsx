@@ -1,10 +1,11 @@
 import React, { createContext, useContext, useMemo, ReactElement } from "react"
 import useRouter from "./useRouter"
+import { createBrowserHistory } from "history"
 
-const SetRoute = createContext(null)
-const Location = createContext(null)
-const BlockRoute = createContext(null)
-const History = createContext(null)
+const SetRoute = createContext<(path?: string) => boolean>(null)
+const Location = createContext<URL>(null)
+const BlockRoute = createContext<[boolean, (block: boolean) => void]>(null)
+const History = createContext<ReturnType<typeof createBrowserHistory>>(null)
 
 export function useSetRoute() {
   return useContext(SetRoute)
@@ -25,7 +26,7 @@ export function useHistory() {
 export default function Provider({ children }: { children: ReactElement }) {
   const [location, setRoute, blocked, setBlocking, history] = useRouter()
 
-  const blockValue = useMemo(() => {
+  const blockValue = useMemo((): [boolean, (block: boolean) => void] => {
     return [blocked, setBlocking]
   }, [blocked, setBlocking])
 

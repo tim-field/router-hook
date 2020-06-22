@@ -6,7 +6,13 @@ const history = createBrowserHistory()
 const toLocation = (path: string) => new URL(path, window.location.href)
 const cloneLocation = () => new URL(window.location.href)
 
-function useRouter() {
+function useRouter(): [
+  URL,
+  (path?: string) => boolean,
+  boolean,
+  (value: boolean) => void,
+  ReturnType<typeof createBrowserHistory>
+] {
   const [location, setLocation] = useState(() => cloneLocation())
   const [blocking, setBlocking] = useState(false)
   const [blocked, setBlocked] = useState(false)
@@ -27,7 +33,7 @@ function useRouter() {
     [blocking]
   )
 
-  const setIsBlocking = useCallback(value => {
+  const setIsBlocking = useCallback((value: boolean) => {
     setBlocking(value)
     if (value === false) {
       // We should no longer be in a blocked state now
