@@ -1,23 +1,28 @@
 import { pathToRegexp, Key, compile } from "path-to-regexp"
+import { ReactNode } from "react"
 
-function getParams<P = {}>(keys: Key[], match: RegExpExecArray): P {
+function getParams<P = Record<string, string>>(
+  keys: Key[],
+  match: RegExpExecArray
+): P {
   return keys.reduce(
     (acc, key, i) => ({ [key.name]: match[i + 1], ...acc }),
     {} as P
   )
 }
 
-interface Route<P> {
+interface Route<P = Record<string, string>> {
   path: string
-  // match(location: string): P | undefined
   match(
     location: string,
-    render?: (p: P) => React.ReactElement<React.FunctionComponent<P>>
-  ): React.ReactElement<React.FunctionComponent<P>> | undefined | P
-  toUrl(params?: object): string
+    render?: (p: P) => ReactNode
+  ): ReactNode | P | undefined
+  toUrl(params?: Record<string, unknown>): string
 }
 
-export default function route<P = {}>(path: string): Route<P> {
+export default function route<P = Record<string, string>>(
+  path: string
+): Route<P> {
   const keys: Key[] = []
   const regex = pathToRegexp(path, keys)
   const toPath = compile(path)
@@ -29,17 +34,14 @@ export default function route<P = {}>(path: string): Route<P> {
 
   return {
     path,
-    match(location: string, render?: React.FunctionComponent<P>) {
-      const params = matchLocation(location)
-      if (render) {
-        return render(params)
-      }
-      if (params) {
-        return params
+    match(location: string, render?: (p: P) => ReactNode) {
+      const matched = matchLocation(location)
+      if (matched) {
+        return render ? render(matched) : matched
       }
       return undefined
     },
-    toUrl(params?: object) {
+    toUrl(params?: Record<string, unknown>) {
       const defined = params
         ? Object.entries(params).reduce((acc, [k, v]) => {
             return v === undefined ? acc : { ...acc, [k]: v }
