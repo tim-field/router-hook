@@ -17,7 +17,7 @@ interface Route<P = Record<string, string>> {
     location: string,
     render?: (p: P) => ReactNode
   ): ReactNode | P | undefined
-  toUrl(params?: Record<string, unknown>): string
+  toUrl(params?: P): string
 }
 
 export default function route<P = Record<string, string>>(
@@ -41,7 +41,7 @@ export default function route<P = Record<string, string>>(
       }
       return undefined
     },
-    toUrl(params?: Record<string, unknown>) {
+    toUrl(params?: P) {
       const defined = params
         ? Object.entries(params).reduce((acc, [k, v]) => {
             return v === undefined ? acc : { ...acc, [k]: v }
