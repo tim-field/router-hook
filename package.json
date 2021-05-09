@@ -29,7 +29,7 @@
     "react-dom": "16.13.1",
     "tslib": "2.0.0",
     "typescript": "3.9.5",
-    "yalc": "1.0.0-pre.35"
+    "yalc": "1.0.0-pre.53"
   },
   "scripts": {
     "prepare": "npm run build",
